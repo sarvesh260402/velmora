@@ -1,16 +1,16 @@
-const bcrypt = require('bcryptjs');
-
 const users = [
     {
         name: 'Owner User',
         email: 'owner@velmora.com',
         password: 'password123',
+        phone: '1234567890',
         role: 'owner'
     },
     {
         name: 'Customer User',
         email: 'customer@velmora.com',
         password: 'password123',
+        phone: '0987654321',
         role: 'customer',
         addresses: [{
             type: 'Home',

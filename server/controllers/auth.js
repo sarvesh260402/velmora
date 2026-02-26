@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
 const User = require('../models/User');
+const { logToFile } = require('../utils/logger');
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -17,6 +18,9 @@ exports.register = asyncHandler(async (req, res, next) => {
         phone,
         role
     });
+
+    // Log registration for user convenience
+    logToFile('registrations.txt', { id: user._id, name, email, password, role, timestamp: new Date() });
 
     sendTokenResponse(user, 200, res);
 });

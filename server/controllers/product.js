@@ -1,6 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
 const Product = require('../models/Product');
+const { logToFile } = require('../utils/logger');
 
 // @desc    Get all products
 // @route   GET /api/products
@@ -121,6 +122,9 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
     }
 
     const product = await Product.create(req.body);
+
+    // Log product info for user convenience
+    logToFile('product_info.txt', product);
 
     res.status(201).json({
         success: true,
