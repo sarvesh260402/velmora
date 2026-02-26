@@ -15,6 +15,8 @@ const products = require('./routes/product');
 const payments = require('./routes/payment');
 const orders = require('./routes/order');
 const reviews = require('./routes/review');
+const customer = require('./routes/customer');
+const owner = require('./routes/owner');
 
 const app = express();
 
