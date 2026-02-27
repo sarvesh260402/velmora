@@ -22,7 +22,7 @@ const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         let path = 'uploads/';
-        if (file.fieldname === 'images') path += 'products/';
+        if (file.fieldname === 'images') path += 'productimage/';
         else if (file.fieldname === 'model') path += 'models/';
         cb(null, path);
     },

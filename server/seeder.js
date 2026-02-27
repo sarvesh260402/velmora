@@ -6,6 +6,7 @@ const reviews = require('./data/reviews');
 const User = require('./models/User');
 const Product = require('./models/Product');
 const Review = require('./models/Review');
+const Order = require('./models/Order');
 const connectDB = require('./config/db');
 
 dotenv.config();
@@ -15,6 +16,7 @@ connectDB();
 const importData = async () => {
     try {
         await Review.deleteMany();
+        await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
 
@@ -38,6 +40,7 @@ const importData = async () => {
 const destroyData = async () => {
     try {
         await Review.deleteMany();
+        await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
 

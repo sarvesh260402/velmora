@@ -1,0 +1,13 @@
+[2026-02-27T07:11:37.116Z] {
+  "name": "T shirt",
+  "description": "for daily wear",
+  "price": 299,
+  "category": "Clothing",
+  "images": [],
+  "stock": 150,
+  "owner": "69a141981003cc4235fdd9be",
+  "_id": "69a143a91003cc4235fdd9cd",
+  "createdAt": "2026-02-27T07:11:37.111Z",
+  "__v": 0
+}
+---

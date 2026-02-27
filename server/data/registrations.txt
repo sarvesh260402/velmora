@@ -1,0 +1,27 @@
+[2026-02-27T06:47:24.875Z] {
+  "id": "69a13dfc7507809890a7d9d7",
+  "name": "sarvesh",
+  "email": "sarvesh@gmail.com",
+  "password": "sarvesh",
+  "role": "owner",
+  "timestamp": "2026-02-27T06:47:24.875Z"
+}
+---
+[2026-02-27T07:02:20.017Z] {
+  "id": "69a1417b1003cc4235fdd9b8",
+  "name": "bhargav",
+  "email": "bhargav@gmail.com",
+  "password": "bhargav",
+  "role": "customer",
+  "timestamp": "2026-02-27T07:02:20.016Z"
+}
+---
+[2026-02-27T07:02:49.046Z] {
+  "id": "69a141981003cc4235fdd9be",
+  "name": "sarvesh",
+  "email": "sarvesh@gmail.com",
+  "password": "sarvesh",
+  "role": "owner",
+  "timestamp": "2026-02-27T07:02:49.046Z"
+}
+---

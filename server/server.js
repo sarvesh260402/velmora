@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -25,11 +26,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Request logger
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// Set static folder
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Mount routers
 app.use('/api/auth', auth);
 app.use('/api/products', products);
 app.use('/api/payments', payments);
 app.use('/api/orders', orders);
+app.use('/api/reviews', reviews);
+app.use('/api/customer', customer);
+app.use('/api/owner', owner);
 
 
 

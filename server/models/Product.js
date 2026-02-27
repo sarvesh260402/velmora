@@ -29,6 +29,15 @@ const productSchema = new mongoose.Schema({
             'Home & Kitchen'
         ]
     },
+    subcategory: {
+        type: String,
+        trim: true
+    },
+    gender: {
+        type: String,
+        enum: ['Men', 'Women', 'Unisex', 'None'],
+        default: 'None'
+    },
     images: {
         type: [String],
         default: []

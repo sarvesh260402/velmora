@@ -8,7 +8,13 @@ const Order = require('../models/Order');
 // @access  Private (Owner)
 exports.getAnalytics = asyncHandler(async (req, res, next) => {
     const productCount = await Product.countDocuments({ owner: req.user.id });
-    const orders = await Order.find({ 'items.product': { $in: await Product.find({ owner: req.user.id }).select('_id') } });
+
+    // Find all products owned by this owner
+    const ownerProducts = await Product.find({ owner: req.user.id }).select('_id');
+    const productIds = ownerProducts.map(p => p._id);
+
+    // Find orders containing any of these products
+    const orders = await Order.find({ 'orderItems.product': { $in: productIds } });
 
     const totalRevenue = orders.reduce((acc, order) => acc + order.totalPrice, 0);
 

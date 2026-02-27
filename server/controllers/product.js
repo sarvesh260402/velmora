@@ -100,30 +100,23 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 // @route   POST /api/products
 // @access  Private (Owner)
 exports.createProduct = asyncHandler(async (req, res, next) => {
-    const { uploadImage, upload3DModel } = require('../utils/cloudinary');
-
     // Add user to req.body
     req.body.owner = req.user.id;
 
-    // Handle single image upload (placeholder for more)
+    // Handle local image storage
     if (req.files && req.files.images) {
-        const imageUrls = [];
-        for (const file of req.files.images) {
-            const url = await uploadImage(file.path);
-            imageUrls.push(url);
-        }
-        req.body.images = imageUrls;
+        req.body.images = req.files.images.map(file => `/uploads/productimage/${file.filename}`);
     }
 
-    // Handle 3D model upload
+    // Handle local 3D model storage
     if (req.files && req.files.model) {
-        const modelUrl = await upload3DModel(req.files.model[0].path);
-        req.body['3dModel'] = modelUrl;
+        // Store the relative path for serving
+        req.body['3dModel'] = `/uploads/models/${req.files.model[0].filename}`;
     }
 
     const product = await Product.create(req.body);
 
-    // Log product info for user convenience
+    // Record product info in text file
     logToFile('product_info.txt', product);
 
     res.status(201).json({
